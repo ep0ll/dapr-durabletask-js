@@ -15,6 +15,7 @@ export class OrchestrationState {
   serializedOutput?: string;
   serializedCustomStatus?: string;
   failureDetails?: FailureDetails;
+  terminationReason?: string;
 
   constructor(
     instanceId: string,
@@ -26,6 +27,7 @@ export class OrchestrationState {
     serializedOutput?: string,
     serializedCustomStatus?: string,
     failureDetails?: FailureDetails,
+    terminationReason?: string,
   ) {
     this.instanceId = instanceId;
     this.name = name;
@@ -36,6 +38,7 @@ export class OrchestrationState {
     this.serializedOutput = serializedOutput;
     this.serializedCustomStatus = serializedCustomStatus;
     this.failureDetails = failureDetails;
+    this.terminationReason = terminationReason;
   }
 
   raiseIfFailed(): void {
