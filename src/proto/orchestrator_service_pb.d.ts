@@ -282,6 +282,11 @@ export class ExecutionTerminatedEvent extends jspb.Message {
     getInput(): google_protobuf_wrappers_pb.StringValue | undefined;
     setInput(value?: google_protobuf_wrappers_pb.StringValue): ExecutionTerminatedEvent;
 
+    hasReason(): boolean;
+    clearReason(): void;
+    getReason(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setReason(value?: google_protobuf_wrappers_pb.StringValue): ExecutionTerminatedEvent;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ExecutionTerminatedEvent.AsObject;
     static toObject(includeInstance: boolean, msg: ExecutionTerminatedEvent): ExecutionTerminatedEvent.AsObject;
@@ -295,6 +300,7 @@ export class ExecutionTerminatedEvent extends jspb.Message {
 export namespace ExecutionTerminatedEvent {
     export type AsObject = {
         input?: google_protobuf_wrappers_pb.StringValue.AsObject,
+        reason?: google_protobuf_wrappers_pb.StringValue.AsObject,
     }
 }
 
@@ -1393,6 +1399,11 @@ export class OrchestrationState extends jspb.Message {
     getFailuredetails(): TaskFailureDetails | undefined;
     setFailuredetails(value?: TaskFailureDetails): OrchestrationState;
 
+    hasTerminationreason(): boolean;
+    clearTerminationreason(): void;
+    getTerminationreason(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setTerminationreason(value?: google_protobuf_wrappers_pb.StringValue): OrchestrationState;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): OrchestrationState.AsObject;
     static toObject(includeInstance: boolean, msg: OrchestrationState): OrchestrationState.AsObject;
@@ -1416,6 +1427,7 @@ export namespace OrchestrationState {
         output?: google_protobuf_wrappers_pb.StringValue.AsObject,
         customstatus?: google_protobuf_wrappers_pb.StringValue.AsObject,
         failuredetails?: TaskFailureDetails.AsObject,
+        terminationreason?: google_protobuf_wrappers_pb.StringValue.AsObject,
     }
 }
 
@@ -1474,6 +1486,11 @@ export class TerminateRequest extends jspb.Message {
     getOutput(): google_protobuf_wrappers_pb.StringValue | undefined;
     setOutput(value?: google_protobuf_wrappers_pb.StringValue): TerminateRequest;
 
+    hasReason(): boolean;
+    clearReason(): void;
+    getReason(): google_protobuf_wrappers_pb.StringValue | undefined;
+    setReason(value?: google_protobuf_wrappers_pb.StringValue): TerminateRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): TerminateRequest.AsObject;
     static toObject(includeInstance: boolean, msg: TerminateRequest): TerminateRequest.AsObject;
@@ -1488,6 +1505,7 @@ export namespace TerminateRequest {
     export type AsObject = {
         instanceid: string,
         output?: google_protobuf_wrappers_pb.StringValue.AsObject,
+        reason?: google_protobuf_wrappers_pb.StringValue.AsObject,
     }
 }
 
