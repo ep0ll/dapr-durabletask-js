@@ -1919,7 +1919,8 @@ proto.ActivityResponse.toObject = function(includeInstance, msg) {
     instanceid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     taskid: jspb.Message.getFieldWithDefault(msg, 2, 0),
     result: (f = msg.getResult()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    failuredetails: (f = msg.getFailuredetails()) && proto.TaskFailureDetails.toObject(includeInstance, f)
+    failuredetails: (f = msg.getFailuredetails()) && proto.TaskFailureDetails.toObject(includeInstance, f),
+    terminationreason: (f = msg.getTerminationreason()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3421,7 +3422,8 @@ proto.ExecutionTerminatedEvent.prototype.toObject = function(opt_includeInstance
  */
 proto.ExecutionTerminatedEvent.toObject = function(includeInstance, msg) {
   var f, obj = {
-    input: (f = msg.getInput()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    input: (f = msg.getInput()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    reason: (f = msg.getReason()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3463,6 +3465,11 @@ proto.ExecutionTerminatedEvent.deserializeBinaryFromReader = function(msg, reade
       reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setInput(value);
       break;
+    case 3:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setReason(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3496,6 +3503,14 @@ proto.ExecutionTerminatedEvent.serializeBinaryToWriter = function(message, write
   if (f != null) {
     writer.writeMessage(
       1,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getReason();
+  if (f != null) {
+    writer.writeMessage(
+      3,
       f,
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
@@ -3537,6 +3552,43 @@ proto.ExecutionTerminatedEvent.prototype.clearInput = function() {
  */
 proto.ExecutionTerminatedEvent.prototype.hasInput = function() {
   return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue reason = 3;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.ExecutionTerminatedEvent.prototype.getReason = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.ExecutionTerminatedEvent} returns this
+*/
+proto.ExecutionTerminatedEvent.prototype.setReason = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ExecutionTerminatedEvent} returns this
+ */
+proto.ExecutionTerminatedEvent.prototype.clearReason = function() {
+  return this.setReason(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ExecutionTerminatedEvent.prototype.hasReason = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -11080,6 +11132,11 @@ proto.OrchestrationState.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,proto.TaskFailureDetails.deserializeBinaryFromReader);
       msg.setFailuredetails(value);
       break;
+    case 18:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setTerminationreason(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -11192,6 +11249,14 @@ proto.OrchestrationState.serializeBinaryToWriter = function(message, writer) {
       11,
       f,
       proto.TaskFailureDetails.serializeBinaryToWriter
+    );
+  }
+  f = message.getTerminationreason();
+  if (f != null) {
+    writer.writeMessage(
+      18,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
 };
@@ -11547,6 +11612,43 @@ proto.OrchestrationState.prototype.hasFailuredetails = function() {
 };
 
 
+/**
+ * optional google.protobuf.StringValue terminationReason = 18;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.OrchestrationState.prototype.getTerminationreason = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 18));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.OrchestrationState} returns this
+*/
+proto.OrchestrationState.prototype.setTerminationreason = function(value) {
+  return jspb.Message.setWrapperField(this, 18, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.OrchestrationState} returns this
+ */
+proto.OrchestrationState.prototype.clearTerminationreason = function() {
+  return this.setTerminationreason(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.OrchestrationState.prototype.hasTerminationreason = function() {
+  return jspb.Message.getField(this, 18) != null;
+};
+
+
 
 
 
@@ -11892,7 +11994,8 @@ proto.TerminateRequest.prototype.toObject = function(opt_includeInstance) {
 proto.TerminateRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     instanceid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    output: (f = msg.getOutput()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    output: (f = msg.getOutput()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    reason: (f = msg.getReason()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -11938,6 +12041,11 @@ proto.TerminateRequest.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setOutput(value);
       break;
+    case 5:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setReason(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -11978,6 +12086,14 @@ proto.TerminateRequest.serializeBinaryToWriter = function(message, writer) {
   if (f != null) {
     writer.writeMessage(
       2,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getReason();
+  if (f != null) {
+    writer.writeMessage(
+      5,
       f,
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
@@ -12037,6 +12153,43 @@ proto.TerminateRequest.prototype.clearOutput = function() {
  */
 proto.TerminateRequest.prototype.hasOutput = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue reason = 5;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.TerminateRequest.prototype.getReason = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.TerminateRequest} returns this
+*/
+proto.TerminateRequest.prototype.setReason = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.TerminateRequest} returns this
+ */
+proto.TerminateRequest.prototype.clearReason = function() {
+  return this.setReason(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.TerminateRequest.prototype.hasReason = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
