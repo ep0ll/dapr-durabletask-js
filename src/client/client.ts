@@ -230,8 +230,9 @@ export class TaskHubGrpcClient {
    *
    * @param {string} instanceId - orchestrator instance id to terminate.
    * @param {any} output - The optional output to set for the terminated orchestrator instance.
+   * @param {string} reason - Optional reason retained in the terminated orchestrator's history.
    */
-  async terminateOrchestration(instanceId: string, output: any = null): Promise<void> {
+  async terminateOrchestration(instanceId: string, output: any = null, reason?: string): Promise<void> {
     const req = new pb.TerminateRequest();
     req.setInstanceid(instanceId);
 
@@ -239,6 +240,12 @@ export class TaskHubGrpcClient {
     i.setValue(JSON.stringify(output));
 
     req.setOutput(i);
+
+    if (reason !== undefined) {
+      const terminationReason = new StringValue();
+      terminationReason.setValue(reason);
+      req.setReason(terminationReason);
+    }
 
     console.log(`Terminating '${instanceId}'`);
 
