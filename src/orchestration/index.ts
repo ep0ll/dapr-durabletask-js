@@ -53,5 +53,6 @@ export function newOrchestrationState(
     state?.getOutput()?.toString(),
     state?.getCustomstatus()?.toString(),
     failureDetails,
+    state?.getTerminationreason()?.getValue(),
   );
 }
